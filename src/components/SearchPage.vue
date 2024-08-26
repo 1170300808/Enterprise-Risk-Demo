@@ -8,7 +8,10 @@
         @keyup.enter="handleSearch"
       >
         <template #append>
-          <el-button @click="handleSearch" icon="el-icon-search"></el-button>
+          <!-- 使用图标组件 -->
+          <el-icon @click="handleSearch">
+            <Search />
+          </el-icon>
         </template>
       </el-input>
   
@@ -16,23 +19,22 @@
       <el-collapse v-model="activeFilters">
         <el-collapse-item title="展开筛选条件" name="1">
           <el-form :model="filters" label-width="100px" class="filter-form">
+            <!-- 使用多选框替代单选框 -->
             <el-form-item label="注册资本">
-              <el-radio-group v-model="filters.registeredCapital">
-                <el-radio-button label="不限">不限</el-radio-button>
-                <el-radio-button label="100万以内">100万以内</el-radio-button>
-                <el-radio-button label="100-200">100-200</el-radio-button>
-                <el-radio-button label="200-500">200-500</el-radio-button>
+              <el-checkbox-group v-model="filters.registeredCapital">
+                <el-checkbox label="100万以内">100万以内</el-checkbox>
+                <el-checkbox label="100-200">100-200</el-checkbox>
+                <el-checkbox label="200-500">200-500</el-checkbox>
                 <!-- 添加更多选项 -->
-              </el-radio-group>
+              </el-checkbox-group>
             </el-form-item>
   
             <el-form-item label="企业状态">
-              <el-radio-group v-model="filters.companyStatus">
-                <el-radio-button label="不限">不限</el-radio-button>
-                <el-radio-button label="在营（开业）企业">在营（开业）企业</el-radio-button>
-                <el-radio-button label="停业企业">停业企业</el-radio-button>
+              <el-checkbox-group v-model="filters.companyStatus">
+                <el-checkbox label="在营（开业）企业">在营（开业）企业</el-checkbox>
+                <el-checkbox label="停业企业">停业企业</el-checkbox>
                 <!-- 添加更多选项 -->
-              </el-radio-group>
+              </el-checkbox-group>
             </el-form-item>
   
             <!-- 添加更多筛选条件 -->
@@ -60,15 +62,19 @@
   <script>
   import { ref } from 'vue';
   import { ElMessage } from 'element-plus';
+  import { Search } from '@element-plus/icons-vue'; // 确保图标组件已正确导入
   
   export default {
     name: 'SearchPage',
+    components: {
+      Search, // 注册图标组件
+    },
     setup() {
       const searchQuery = ref('');
       const activeFilters = ref([]);
       const filters = ref({
-        registeredCapital: '不限',
-        companyStatus: '不限',
+        registeredCapital: [],
+        companyStatus: [],
         // 其他筛选条件初始化
       });
       const searchResults = ref([]);

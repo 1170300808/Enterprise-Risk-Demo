@@ -3,7 +3,7 @@
     <!-- 页面顶部的导航栏，可以自行设计 -->
     <el-header>
       <div class="logo">
-        MicoSage
+        Enterprise-Risk-Demo
       </div>
     </el-header>
 
