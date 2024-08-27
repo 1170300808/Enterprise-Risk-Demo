@@ -19,7 +19,7 @@
       <el-collapse v-model="activeFilters">
         <el-collapse-item title="展开筛选条件" name="1">
           <el-form :model="filters" label-width="100px" class="filter-form">
-            <!-- 使用多选框替代单选框 -->
+            <!-- 使用多选框替代单选框 有需要的话换成el-radio -->
             <el-form-item label="注册资本">
               <el-checkbox-group v-model="filters.registeredCapital">
                 <el-checkbox label="不限">不限</el-checkbox>
