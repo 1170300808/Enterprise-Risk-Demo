@@ -21,19 +21,14 @@
 
       <!-- 功能模块 -->
       <div class="header-menu">
-        <el-link href="#" class="menu-item">首页</el-link>
-        <el-link href="#" class="menu-item">分类查询</el-link>
-        <el-link href="#" class="menu-item">小程序</el-link>
+        <el-link href="#" type="primary" class="menu-item">首页</el-link>
+        <el-link href="#" type="primary" class="menu-item">分类查询</el-link>
+        <el-link href="#" type="primary" class="menu-item">小程序</el-link>
       </div>
 
       <!-- 用户图标 -->
-      <el-icon 
-        class="user-avatar"
-        icon="el-icon-user-solid"
-        size="large"
-        style="cursor: pointer;">
-        <Avatar />
-      </el-icon>
+      <el-avatar :size="40" :src="require('@/assets/user.png')" />
+
     </el-header>
 
     <!-- 主体内容区域 -->
@@ -94,23 +89,25 @@ export default defineComponent({
 .header-search {
   flex: 1;
   margin-right: 20px;
-  max-width: 300px; /* 搜索框的最大宽度 */
+  max-width: 250px; /* 搜索框的最大宽度 */
 }
 
 .header-menu {
   display: flex;
   align-items: center;
-  margin-right: 20px;
+  margin-right: 0px;
 }
 
 .menu-item {
   margin: 0 10px;
-  color: #909399;
+  /* color: #909399; */
   cursor: pointer;
   font-size: 16px;
 }
 
 .user-avatar {
   margin-left: 20px;
+  /* 整个图案是方形的，设置背景色会很丑 */
+  /* background-color: blueviolet; */
 }
 </style>
