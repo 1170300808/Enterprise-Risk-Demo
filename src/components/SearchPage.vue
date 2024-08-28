@@ -9,7 +9,7 @@
       >
         <template #append>
           <!-- 使用图标组件 -->
-          <el-icon @click="handleSearch">
+          <el-icon @click="handleSearch" style="color: black">
             <Search />
           </el-icon>
         </template>
@@ -19,126 +19,125 @@
       <el-collapse v-model="activeFilters">
         <el-collapse-item title="展开筛选条件" name="1">
           <el-form :model="filters" label-width="100px" class="filter-form">
-            <!-- 使用多选框替代单选框 有需要的话换成el-radio -->
             <el-form-item label="注册资本">
-              <el-checkbox-group v-model="filters.registeredCapital">
-                <el-checkbox label="不限">不限</el-checkbox>
-                <el-checkbox label="100以内">100以内</el-checkbox>
-                <el-checkbox label="100-200">100-200</el-checkbox>
-                <el-checkbox label="200-500">200-500</el-checkbox>
-                <el-checkbox label="500-1000">500-10000</el-checkbox>
-                <el-checkbox label="1000-50000">1000-50000</el-checkbox>
-                <el-checkbox label="50000以上">50000以上</el-checkbox>
+              <el-radio-group v-model="filters.registeredCapital">
+                <el-radio label="不限">不限</el-radio>
+                <el-radio label="100以内">100以内</el-radio>
+                <el-radio label="100-200">100-200</el-radio>
+                <el-radio label="200-500">200-500</el-radio>
+                <el-radio label="500-1000">500-10000</el-radio>
+                <el-radio label="1000-50000">1000-50000</el-radio>
+                <el-radio label="50000以上">50000以上</el-radio>
                 <!-- 添加更多选项 -->
-              </el-checkbox-group>
+              </el-radio-group>
             </el-form-item>
   
             <el-form-item label="企业状态">
-              <el-checkbox-group v-model="filters.companyStatus">
-                <el-checkbox label="不限">不限</el-checkbox>
-                <el-checkbox label="在营（开业）企业">在营（开业）企业</el-checkbox>
-                <el-checkbox label="吊销企业">吊销企业</el-checkbox>
-                <el-checkbox label="注销企业">注销企业</el-checkbox>
-                <el-checkbox label="迁出">迁出</el-checkbox>
+              <el-radio-group v-model="filters.companyStatus">
+                <el-radio label="不限">不限</el-radio>
+                <el-radio label="在营（开业）企业">在营（开业）企业</el-radio>
+                <el-radio label="吊销企业">吊销企业</el-radio>
+                <el-radio label="注销企业">注销企业</el-radio>
+                <el-radio label="迁出">迁出</el-radio>
                 <!-- 添加更多选项 -->
-              </el-checkbox-group>
+              </el-radio-group>
             </el-form-item>
 
             <el-form-item label="企业类型">
-              <el-checkbox-group v-model="filters.companyType">
-                <el-checkbox label="不限">不限</el-checkbox>
-                <el-checkbox label="有限责任公司（自然人独资）">有限责任公司（自然人独资）</el-checkbox>
-                <el-checkbox label="有限责任公司（自然人投资或控股）">有限责任公司（自然人投资或控股）</el-checkbox>
-                <el-checkbox label="有限责任公司（自然人投资或控股的法人投资）">有限责任公司（自然人投资或控股的法人投资）</el-checkbox>
-                <el-checkbox label="其他有限责任公司">其他有限责任公司</el-checkbox>
+              <el-radio-group v-model="filters.companyType">
+                <el-radio label="不限">不限</el-radio>
+                <el-radio label="有限责任公司（自然人独资）">有限责任公司（自然人独资）</el-radio>
+                <el-radio label="有限责任公司（自然人投资或控股）">有限责任公司（自然人投资或控股）</el-radio>
+                <el-radio label="有限责任公司（自然人投资或控股的法人投资）">有限责任公司（自然人投资或控股的法人投资）</el-radio>
+                <el-radio label="其他有限责任公司">其他有限责任公司</el-radio>
                 <!-- 添加更多选项 -->
-              </el-checkbox-group>
+              </el-radio-group>
             </el-form-item>
   
             <el-form-item label="企业类别">
-              <el-checkbox-group v-model="filters.companyCategory">
-                <el-checkbox label="不限">不限</el-checkbox>
-                <el-checkbox label="私营企业">私营企业</el-checkbox>
-                <el-checkbox label="农民专业合作社">农民专业合作社</el-checkbox>
-                <el-checkbox label="内资企业">内资企业</el-checkbox>
-                <el-checkbox label="外资投资企业">外资投资企业</el-checkbox>
+              <el-radio-group v-model="filters.companyCategory">
+                <el-radio label="不限">不限</el-radio>
+                <el-radio label="私营企业">私营企业</el-radio>
+                <el-radio label="农民专业合作社">农民专业合作社</el-radio>
+                <el-radio label="内资企业">内资企业</el-radio>
+                <el-radio label="外资投资企业">外资投资企业</el-radio>
                 <!-- 添加更多选项 -->
-              </el-checkbox-group>
+              </el-radio-group>
             </el-form-item>
 
             <el-form-item label="行业门类">
-              <el-checkbox-group v-model="filters.industryCategory">
-                <el-checkbox label="不限">不限</el-checkbox>
-                <el-checkbox label="批发和零售业">批发和零售业</el-checkbox>
-                <el-checkbox label="房地产业">房地产业</el-checkbox>
-                <el-checkbox label="租赁和商务服务业">租赁和商务服务业</el-checkbox>
-                <el-checkbox label="制造业">制造业</el-checkbox>
-                <el-checkbox label="信息传输、软件和信息技术服务业">信息传输、软件和信息技术服务业</el-checkbox>
-                <el-checkbox label="科学研究和技术服务业">科学研究和技术服务业</el-checkbox>
-                <el-checkbox label="建筑业">建筑业</el-checkbox>
-                <el-checkbox label="惠民服务、修理和其他服务业">惠民服务、修理和其他服务业</el-checkbox>
-                <el-checkbox label="住宿和餐饮业">住宿和餐饮业</el-checkbox>
-                <el-checkbox label="交通运输、仓储和邮政业">交通运输、仓储和邮政业</el-checkbox>
-                <el-checkbox label="文化、体育和娱乐业">文化、体育和娱乐业</el-checkbox>
-                <el-checkbox label="教育">教育</el-checkbox>
-                <el-checkbox label="农、林、牧、渔业">农、林、牧、渔业</el-checkbox>
-                <el-checkbox label="水利、环境和公共设施管理业">水利、环境和公共设施管理业</el-checkbox>
-                <el-checkbox label="电力、热力、燃气及生产和供应业">电力、热力、燃气及生产和供应业</el-checkbox>
-                <el-checkbox label="金融业">金融业</el-checkbox>
-                <el-checkbox label="采矿业">采矿业</el-checkbox>
-                <el-checkbox label="公共管理、社会管理和社会福利">公共管理、社会管理和社会福利</el-checkbox>
+              <el-radio-group v-model="filters.industryCategory">
+                <el-radio label="不限">不限</el-radio>
+                <el-radio label="批发和零售业">批发和零售业</el-radio>
+                <el-radio label="房地产业">房地产业</el-radio>
+                <el-radio label="租赁和商务服务业">租赁和商务服务业</el-radio>
+                <el-radio label="制造业">制造业</el-radio>
+                <el-radio label="信息传输、软件和信息技术服务业">信息传输、软件和信息技术服务业</el-radio>
+                <el-radio label="科学研究和技术服务业">科学研究和技术服务业</el-radio>
+                <el-radio label="建筑业">建筑业</el-radio>
+                <el-radio label="惠民服务、修理和其他服务业">惠民服务、修理和其他服务业</el-radio>
+                <el-radio label="住宿和餐饮业">住宿和餐饮业</el-radio>
+                <el-radio label="交通运输、仓储和邮政业">交通运输、仓储和邮政业</el-radio>
+                <el-radio label="文化、体育和娱乐业">文化、体育和娱乐业</el-radio>
+                <el-radio label="教育">教育</el-radio>
+                <el-radio label="农、林、牧、渔业">农、林、牧、渔业</el-radio>
+                <el-radio label="水利、环境和公共设施管理业">水利、环境和公共设施管理业</el-radio>
+                <el-radio label="电力、热力、燃气及生产和供应业">电力、热力、燃气及生产和供应业</el-radio>
+                <el-radio label="金融业">金融业</el-radio>
+                <el-radio label="采矿业">采矿业</el-radio>
+                <el-radio label="公共管理、社会管理和社会福利">公共管理、社会管理和社会福利</el-radio>
                 <!-- 添加更多选项 -->
-              </el-checkbox-group>
+              </el-radio-group>
             </el-form-item>
             
             <el-form-item label="从业人数">
-              <el-checkbox-group v-model="filters.employeeCount">
-                <el-checkbox label="不限">不限</el-checkbox>
-                <el-checkbox label="5人以上">5人以上</el-checkbox>
-                <el-checkbox label="5人以下">5人以下</el-checkbox>
+              <el-radio-group v-model="filters.employeeCount">
+                <el-radio label="不限">不限</el-radio>
+                <el-radio label="5人以上">5人以上</el-radio>
+                <el-radio label="5人以下">5人以下</el-radio>
                 <!-- 添加更多选项 -->
-              </el-checkbox-group>
+              </el-radio-group>
             </el-form-item>
             
             <el-form-item label="成立期限">
-              <el-checkbox-group v-model="filters.establishmentPeriod">
-                <el-checkbox label="不限">不限</el-checkbox>
-                <el-checkbox label="1年内">1年内</el-checkbox>
-                <el-checkbox label="1-2年">1-2年</el-checkbox>
-                <el-checkbox label="2-3年">2-3年</el-checkbox>
-                <el-checkbox label="3-5年">3-5年</el-checkbox>
-                <el-checkbox label="5-10年">5-10年</el-checkbox>
-                <el-checkbox label="10年以上">10年以上</el-checkbox>
+              <el-radio-group v-model="filters.establishmentPeriod">
+                <el-radio label="不限">不限</el-radio>
+                <el-radio label="1年内">1年内</el-radio>
+                <el-radio label="1-2年">1-2年</el-radio>
+                <el-radio label="2-3年">2-3年</el-radio>
+                <el-radio label="3-5年">3-5年</el-radio>
+                <el-radio label="5-10年">5-10年</el-radio>
+                <el-radio label="10年以上">10年以上</el-radio>
                 <!-- 添加更多选项 -->
-              </el-checkbox-group>
+              </el-radio-group>
             </el-form-item>
 
             <el-form-item label="经营期限">
-              <el-checkbox-group v-model="filters.operatingPeriod">
-                <el-checkbox label="不限">不限</el-checkbox>
-                <el-checkbox label="2年内">2年内</el-checkbox>
-                <el-checkbox label="2-5年">2-5年</el-checkbox>
-                <el-checkbox label="5-10年">5-10年</el-checkbox>
-                <el-checkbox label="10年以上">10年以上</el-checkbox>
+              <el-radio-group v-model="filters.operatingPeriod">
+                <el-radio label="不限">不限</el-radio>
+                <el-radio label="2年内">2年内</el-radio>
+                <el-radio label="2-5年">2-5年</el-radio>
+                <el-radio label="5-10年">5-10年</el-radio>
+                <el-radio label="10年以上">10年以上</el-radio>
                 <!-- 添加更多选项 -->
-              </el-checkbox-group>
+              </el-radio-group>
             </el-form-item>
 
             <el-form-item label="排序字段">
-              <el-checkbox-group v-model="filters.sortingField">
-                <el-checkbox label="注册资本">注册资本</el-checkbox>
-                <el-checkbox label="成立日期">成立日期</el-checkbox>
-                <el-checkbox label="从业人数">从业人数</el-checkbox>
+              <el-radio-group v-model="filters.sortingField">
+                <el-radio label="注册资本">注册资本</el-radio>
+                <el-radio label="成立日期">成立日期</el-radio>
+                <el-radio label="从业人数">从业人数</el-radio>
                 <!-- 添加更多选项 -->
-              </el-checkbox-group>
+              </el-radio-group>
             </el-form-item>
 
             <el-form-item label="排序方式">
-              <el-checkbox-group v-model="filters.sortingOrder">
-                <el-checkbox label="升序">升序</el-checkbox>
-                <el-checkbox label="降序">降序</el-checkbox>
+              <el-radio-group v-model="filters.sortingOrder">
+                <el-radio label="升序">升序</el-radio>
+                <el-radio label="降序">降序</el-radio>
                 <!-- 添加更多选项 -->
-              </el-checkbox-group>
+              </el-radio-group>
             </el-form-item>
 
 
@@ -178,8 +177,16 @@
       const searchQuery = ref('');
       const activeFilters = ref([]);
       const filters = ref({
-        registeredCapital: [],
-        companyStatus: [],
+        registeredCapital: '',
+        companyStatus: '',
+        companyType: '',
+        companyCategory: '',
+        industryCategory: '',
+        employeeCount: '',
+        establishmentPeriod: '',
+        operatingPeriod: '',
+        sortingField: '',
+        sortingOrder: '',
         // 其他筛选条件初始化
       });
       const searchResults = ref([]);
@@ -225,11 +232,11 @@
   
   <style scoped>
   .search-page {
-    padding: 20px;
+    padding: 0px;
   }
   
   .search-input {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     width: 100%;
   }
   

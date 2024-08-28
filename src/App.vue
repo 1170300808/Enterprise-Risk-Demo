@@ -14,21 +14,20 @@
       >
         <template #append>
           <el-icon @click="handleSearch">
-            <Search/>
+            <Search />
           </el-icon>
         </template>
       </el-input>
 
       <!-- 功能模块 -->
       <div class="header-menu">
-        <el-link href="#" type="primary" class="menu-item">首页</el-link>
-        <el-link href="#" type="primary" class="menu-item">分类查询</el-link>
-        <el-link href="#" type="primary" class="menu-item">小程序</el-link>
-      </div>
+        <el-link href="#" class="menu-item" style="color: #6f65d2;">首页</el-link>
+        <el-link href="#" class="menu-item" style="color: #6f65d2;">分类查询</el-link>
+        <el-link href="#" class="menu-item" style="color: #6f65d2;">智能咨询助手</el-link>
 
       <!-- 用户图标 -->
-      <el-avatar :size="40" :src="require('@/assets/user.png')" />
-
+        <el-avatar :size="40" :src="require('@/assets/user.png')" />
+    </div>
     </el-header>
 
     <!-- 主体内容区域 -->
@@ -77,6 +76,10 @@ export default defineComponent({
   height: 100vh;
 }
 
+.logo {
+  color: #6f65d2;
+}
+
 .header {
   background-color: #f5f5f5;
   display: flex;
@@ -99,15 +102,10 @@ export default defineComponent({
 }
 
 .menu-item {
-  margin: 0 10px;
+  margin: 0 20px;
   /* color: #909399; */
   cursor: pointer;
   font-size: 16px;
 }
 
-.user-avatar {
-  margin-left: 20px;
-  /* 整个图案是方形的，设置背景色会很丑 */
-  /* background-color: blueviolet; */
-}
 </style>
