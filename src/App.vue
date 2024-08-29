@@ -1,51 +1,15 @@
 <template>
   <div id="app">
-    <!-- 页面顶部的导航栏 -->
-    <el-header class="header">
-      <div class="logo">
-        Enterprise-Risk-Demo
-      </div>
-      <!-- 搜索框 -->
-      <el-input
-        v-model="searchQuery"
-        placeholder="搜索企业名"
-        class="header-search"
-        @keyup.enter="handleSearch"
-      >
-        <template #append>
-          <el-icon @click="handleSearch">
-            <Search />
-          </el-icon>
-        </template>
-      </el-input>
-
-      <!-- 功能模块 -->
-      <div class="header-menu">
-        <el-link href="#" class="menu-item" style="color: #6f65d2;">首页</el-link>
-        <el-link href="#" class="menu-item" style="color: #6f65d2;">分类查询</el-link>
-        <el-link href="#" class="menu-item" style="color: #6f65d2;">智能咨询助手</el-link>
-
-      <!-- 用户图标 -->
-        <el-avatar :size="40" :src="require('@/assets/user.png')" />
-    </div>
-    </el-header>
-
-    <!-- 主体内容区域 -->
-    <el-main>
-      <!-- 引入并使用 SearchPage 组件 -->
-      <SearchPage></SearchPage>
-    </el-main>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
 import { defineComponent, ref } from 'vue';
-import SearchPage from './components/SearchPage.vue'; // 请确保路径正确
 
 export default defineComponent({
   name: 'App',
   components: {
-    SearchPage, // 注册 SearchPage 组件
   },
   setup() {
     const searchQuery = ref('');
